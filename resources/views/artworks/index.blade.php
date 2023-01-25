@@ -1,6 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
+<<<<<<< artwork-crud
 <body class="bg-dark vh-100 d-flex justify-content-center flex-column align-items-center">
     <h1 class="text-center text-white mb-5">
         ARTWORKS DB
@@ -8,6 +9,11 @@
     <div class="container">
         <div class="row">
             <div class="col">
+=======
+<div class="container bg-dark vh-100 my-5">
+    <div class="-flex justify-content-center flex-column">
+    <h1 class="text-center text-white mb-4">ARTWORKS DB</h1>
+>>>>>>> master
                 <table class="table table-striped text-white">
                     <thead>
                         <tr>
@@ -28,8 +34,13 @@
                                 <td class="text-white">{{ $artwork->name }}</td>
                                 <td class="text-white">{{ $artwork->year }}</td>
                                 <td>
+<<<<<<< artwork-crud
                                     <a class="btn btn-success" href="{{route('admin.artwork.show',$artwork)}}">Vai</a>
                                     <a class="btn btn-warning" href="">Edita</a>
+=======
+                                    <a class="btn btn-success me-2" href="">Vai</a>
+                                    <a class="btn btn-warning me-2" href="">Edita</a>
+>>>>>>> master
                                     <form action="" method="POST" class="d-inline"
                                         onsubmit="return confirm('Confermi l\'eliminazione di: {{ $artwork->name }}?')"
                                         class="d-inline" action="" method="POST">
@@ -47,9 +58,11 @@
                     </tbody>
                 </table>
             </div>
-        </div>
-    </div>
-</body>
+</div>
 
+<<<<<<< artwork-crud
 </html>
 @endsection
+=======
+@endsection
+>>>>>>> master

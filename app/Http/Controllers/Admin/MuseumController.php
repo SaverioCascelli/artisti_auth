@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Museum;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class MuseumController extends Controller
 {
@@ -35,7 +36,7 @@ class MuseumController extends Controller
      */
     public function create()
     {
-        //
+        return view('museums.create');
     }
 
     /**
@@ -46,7 +47,18 @@ class MuseumController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $museum_data = $request->all();
+
+        $new_museum = new Museum();
+        $str = new Str();
+
+        $museum_data['slug'] = generateSlug($museum_data['name'], $new_museum, $str);
+        $museum_data['address'] = "prova";
+        $new_museum->fill($museum_data);
+        $new_museum->save();
+
+
+        return redirect()->route('admin.museums.show', $new_museum)->with('message', "Museo inserito correttamente");
     }
 
     /**
@@ -55,9 +67,9 @@ class MuseumController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Museum $museum)
     {
-        //
+        return view('museums.show', compact('museum'));
     }
 
     /**
