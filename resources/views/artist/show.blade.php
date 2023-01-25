@@ -1,13 +1,16 @@
 @extends('layouts.admin')
 
 @section('content')
-    <p class="text-center py-5 text-white">
+   <div class="container py-3 text-white">
+    <p class=" text-white">
         Info su:
     </p>
-    <h4 class="text-center fw-bolder text-white">
+    <h3 class="fw-bolder my-3 text-white">
         {{ $artist->name }}
-    </h4>
-    <div class="text-white text-center">
+    </h3>
+    <h5>Biografia</h5>
+    <p class="w-50">{{$artist->bio}}</p>
+    <div>
         <h5>Elenco opere</h5>
         <ul>
             @forelse ($artist->artworks as $artwork)
@@ -19,8 +22,9 @@
     </div>
 
 
-    <div class="d-flex justify-content-center py-5">
-        <a class="btn btn-warning" href="">MODIFICA</a>
+    <div class="d-flex py-5">
+        <a class="btn btn-warning" href="{{route('admin.artist.edit', $artist)}}">MODIFICA</a>
         <a class="btn btn-danger mx-3" href="">ELIMINA</a>
     </div>
+   </div>
 @endsection

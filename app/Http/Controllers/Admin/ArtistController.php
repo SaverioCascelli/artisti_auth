@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Artist;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class ArtistController extends Controller
 {
@@ -15,7 +16,7 @@ class ArtistController extends Controller
      */
     public function index()
     {
-        $artists = Artist::orderBy('name')->paginate(5);
+        $artists = Artist::orderBy('id', 'desc')->paginate(7);
         return view('artist.index', compact('artists'));
     }
 
@@ -56,6 +57,7 @@ class ArtistController extends Controller
      */
     public function show(Artist $artist)
     {
+
         return view('artist.show', compact('artist'));
     }
 
@@ -65,9 +67,9 @@ class ArtistController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Artist $artist)
     {
-        //
+        return view('artist.edit', compact('artist'));
     }
 
     /**
@@ -77,9 +79,19 @@ class ArtistController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,Artist $artist)
     {
-        //
+        $form_data = $request->all();
+        if($form_data['name'] != $artist->name){
+            $str = new Str();
+            $new_artist = new Artist;
+            $form_data['slug'] = generateSlug($form_data['name'], $new_artist, $str);
+        }else{
+            $form_data['slug'] = $artist->slug;
+        }
+
+        $artist->update($form_data);
+        return redirect()->route('admin.artist.show', $artist->id);
     }
 
     /**
