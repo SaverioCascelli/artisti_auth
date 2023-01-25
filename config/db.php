@@ -103,10 +103,5 @@ return [
             'name'      => 'Natività mistica',
             'year'      => 1501
         ],
-        [
-            'artist' => 'Salvador Dalì',
-            'name'      => 'La persistenza della memoria',
-            'year'      => 1931
-        ],
     ]
 ];
