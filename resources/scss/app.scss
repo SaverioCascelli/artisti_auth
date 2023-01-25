@@ -3,11 +3,29 @@
 
 @import 'resources/scss/artist';
 
+$height-head: 60px;
+
 body{
-    background-color: black;
+    background-color: #212529;
+    height: 100vh;
 }
 
+.wrapper{
+    display: flex;
+    height: 100%;
+}
+
+main{
+    justify-content: center;
+    align-items: center;
+    width: calc(100% - 200px);
+}
+
+nav{
+    height: $height-head;
+}
 
 aside{
     width: 200px;
+
 }
