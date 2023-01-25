@@ -1,4 +1,4 @@
 @extends('layouts.guest')
-@section('content')
-<h1>Pagina GUEST</h1>
-@endsection
+    @section('content')
+        <h1 class="text-white">Pagina GUEST</h1>
+    @endsection

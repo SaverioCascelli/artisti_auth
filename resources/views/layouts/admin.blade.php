@@ -21,13 +21,17 @@
 <body>
 
     @include('partials.header')
-    @include('partials.aside')
+    <div class="wrapper">
+        @auth
+            @include('partials.aside')
+            
+        @endauth
 
+        <main>
+            @yield('content')
+        </main>
+    </div>
 
-
-    <main>
-        @yield('content')
-    </main>
 </body>
 
 </html>

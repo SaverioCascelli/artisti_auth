@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             MuseumSeeder::class,
             ArtistsTableSeeder::class,
             ArtworksTableSeeder::class
+
         ]);
     }
 }
